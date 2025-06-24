@@ -77,9 +77,17 @@ const MarqueeRow = ({ children, direction = "left" }: {
             </div>
         </div>
     )
+}   
+
+interface CommercialUseProps {
+    title: string;
+    description: string;
 }
 
-const CommercialUse = () => {
+const CommercialUse = ({
+    title,
+    description,
+}: CommercialUseProps) => {
     return (
         <div
             className="w-full h-full overflow-hidden rounded-l-[28px] bg-cover bg-center bg-no-repeat flex flex-col justify-center items-center"
@@ -87,10 +95,10 @@ const CommercialUse = () => {
         >
             <div className="flex flex-col gap-4 mb-8">
                 <div className="flex flex-row items-center justify-center w-[280px] h-[26px] mx-auto">
-                    <div className="text-white text-2xl font-medium">Commercial use</div>
+                    <div className="text-white text-2xl font-medium">{title}</div>
                 </div>
                 <div className="text-center !max-w-[298px] !h-[57px] text-white opacity-50 font-normal text-base leading-[110%]">
-                    Use your downloads anywhere
+                    {description}
                 </div>
             </div>
 
