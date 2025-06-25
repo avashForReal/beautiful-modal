@@ -1,4 +1,4 @@
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import UpgradePlanBtn from "./atoms/UpgradePlanBtn";
 import { useMemo, useState } from "react";
 import { AvailablePlans, FeatureKey } from "@/types/plans";
@@ -13,6 +13,11 @@ type UpgradePlanProps = {
   showUpgradeModal: boolean;
   setShowUpgradeModal: (show: boolean) => void;
 }
+
+// for accessibility
+const VisuallyHidden = ({ children }: { children: React.ReactNode }) => (
+  <span className="sr-only">{children}</span>
+);
 
 const UpgradePlan = ({ showUpgradeModal, setShowUpgradeModal }: UpgradePlanProps) => {
   const [selectedPlan, setSelectedPlan] = useState<AvailablePlans>('Pro');
@@ -57,6 +62,9 @@ const UpgradePlan = ({ showUpgradeModal, setShowUpgradeModal }: UpgradePlanProps
   return (
     <Dialog open={showUpgradeModal} onOpenChange={handleOpenChange}>
       <DialogContent className="h-[600px] !w-[800px] !max-w-[800px] rounded-[28px] bg-primary-100 flex flex-row gap-0 p-0 border-0" showCloseButton={false}>
+        <VisuallyHidden>
+          <DialogTitle>Upgrade Plan</DialogTitle>
+        </VisuallyHidden>
 
         {renderPane(hoveredFeature, hoveredFeatureDetails)}
 
