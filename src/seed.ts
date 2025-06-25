@@ -18,6 +18,7 @@ export const seedPlans = async () => {
           name: plan.name,
           price: plan.price,
           order: plan.order,
+          isPopular: plan.isPopular,
         },
       });
 

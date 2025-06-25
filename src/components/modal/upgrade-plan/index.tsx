@@ -29,6 +29,13 @@ const UpgradePlan = ({ showUpgradeModal, setShowUpgradeModal }: UpgradePlanProps
     return plansData?.data;
   }, [plansData]);
 
+  const allPlans = useMemo(() => {
+    return Object.values(plans || {}).map((plan) => ({
+      name: plan.name,
+      isPopular: plan.isPopular,
+    }));
+  }, [plans]);
+
   const planDetails = useMemo(() => {
     return plans?.[selectedPlan];
   }, [selectedPlan, plans]);
@@ -79,9 +86,11 @@ const UpgradePlan = ({ showUpgradeModal, setShowUpgradeModal }: UpgradePlanProps
             ) : (
               <>
                 <div className="flex flex-row items-center justify-between gap-[12px] mt-[32px]">
-                  <UpgradePlanBtn text="Plus" handlePlanSelection={handlePlanSelection} selectedPlan={selectedPlan} />
-                  <UpgradePlanBtn text="Pro" handlePlanSelection={handlePlanSelection} selectedPlan={selectedPlan} isPopular />
-                  <UpgradePlanBtn text="Ultra" handlePlanSelection={handlePlanSelection} selectedPlan={selectedPlan} />
+                  {
+                    allPlans?.map((plan) => (
+                      <UpgradePlanBtn text={plan.name} handlePlanSelection={handlePlanSelection} selectedPlan={selectedPlan} isPopular={plan.isPopular} />
+                    ))
+                  }
                 </div>
 
                 <div onMouseLeave={handleHoverLeave} className="mt-[47px]" >
