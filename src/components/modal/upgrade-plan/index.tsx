@@ -31,6 +31,7 @@ const UpgradePlan = ({ showUpgradeModal, setShowUpgradeModal }: UpgradePlanProps
 
   const allPlans = useMemo(() => {
     return Object.values(plans || {}).map((plan) => ({
+      id: plan.id,
       name: plan.name,
       isPopular: plan.isPopular,
     }));
@@ -88,7 +89,7 @@ const UpgradePlan = ({ showUpgradeModal, setShowUpgradeModal }: UpgradePlanProps
                 <div className="flex flex-row items-center justify-between gap-[12px] mt-[32px]">
                   {
                     allPlans?.map((plan) => (
-                      <UpgradePlanBtn text={plan.name} handlePlanSelection={handlePlanSelection} selectedPlan={selectedPlan} isPopular={plan.isPopular} />
+                      <UpgradePlanBtn key={plan.id} text={plan.name} handlePlanSelection={handlePlanSelection} selectedPlan={selectedPlan} isPopular={plan.isPopular} />
                     ))
                   }
                 </div>
