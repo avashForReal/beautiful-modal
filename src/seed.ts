@@ -1,5 +1,5 @@
-import prisma from "./prisma";
-import { plans } from "../data";
+import prisma from "./lib/prisma";
+import { plans } from "./data";
 
 export const seedPlans = async () => {
   const hasExistingPlans = await prisma.plan.count();
@@ -55,3 +55,10 @@ export const seedPlans = async () => {
 
   console.log("Plans seeded successfully!");
 };
+
+if (require.main === module) {
+  seedPlans().catch((error) => {
+    console.error("❌⚠️ Error seeding plans.");
+    console.error(error);
+  });
+}

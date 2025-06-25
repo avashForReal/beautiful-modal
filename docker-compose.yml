@@ -1,0 +1,44 @@
+volumes:
+  redis_data:
+  app_db:
+
+services:
+  redis:
+    container_name: redis
+    image: bitnami/redis:latest
+    restart: always
+    # ports:
+    #   - "7777":"6379"
+    environment:
+      - REDIS_PASSWORD=admin
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+
+  app:
+    container_name: musicgpt-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - REDIS_URL=redis://:admin@redis:6379
+    volumes:
+      - app_db:/app/db
+    depends_on:
+      - redis
+    networks:
+      - app-network
+    command: >
+      sh -c "
+        npx prisma migrate deploy &&
+        npx prisma db seed &&
+        node server.js
+      "
+networks:
+  app-network:
+    driver: bridge 
