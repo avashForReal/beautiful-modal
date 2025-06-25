@@ -23,7 +23,7 @@ const FeaturesPane = ({
             className="w-full h-full overflow-hidden rounded-l-[28px] bg-cover bg-center bg-no-repeat flex flex-col justify-center items-center"
             style={{ backgroundImage: 'url(/blue.png)' }}
         >
-            <div className="flex flex-col gap-2">
+            <div className="animate-blur-in flex flex-col gap-2">
                 <div className="flex flex-row items-center justify-center w-[280px] h-[26px] mx-auto">
                     <div className="text-white text-2xl font-medium flex flex-row items-center gap-2">
                         {titleIcon && <Icon width={20} height={20} className="text-white" />}

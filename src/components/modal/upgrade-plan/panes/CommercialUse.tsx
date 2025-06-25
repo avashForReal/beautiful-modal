@@ -57,9 +57,9 @@ const rowThree = () => {
     )
 }
 
-const MarqueeRow = ({ children, direction = "left" }: { 
-    children: React.ReactNode, 
-    direction?: "left" | "right" 
+const MarqueeRow = ({ children, direction = "left" }: {
+    children: React.ReactNode,
+    direction?: "left" | "right"
 }) => {
     return (
         <div className="overflow-hidden whitespace-nowrap">
@@ -77,7 +77,7 @@ const MarqueeRow = ({ children, direction = "left" }: {
             </div>
         </div>
     )
-}   
+}
 
 interface CommercialUseProps {
     title: string;
@@ -90,28 +90,30 @@ const CommercialUse = ({
 }: CommercialUseProps) => {
     return (
         <div
-            className="w-full h-full overflow-hidden rounded-l-[28px] bg-cover bg-center bg-no-repeat flex flex-col justify-center items-center"
+            className="w-full h-full overflow-hidden rounded-l-[28px] bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: 'url(/blue.png)' }}
         >
-            <div className="flex flex-col gap-4 mb-8">
-                <div className="flex flex-row items-center justify-center w-[280px] h-[26px] mx-auto">
-                    <div className="text-white text-2xl font-medium">{title}</div>
+            <div className="animate-blur-in h-full flex flex-col justify-center items-center">
+                <div className="flex flex-col gap-4 mb-8">
+                    <div className="flex flex-row items-center justify-center w-[280px] h-[26px] mx-auto">
+                        <div className="text-white text-2xl font-medium">{title}</div>
+                    </div>
+                    <div className="text-center !max-w-[298px] !h-[57px] text-white opacity-50 font-normal text-base leading-[110%]">
+                        {description}
+                    </div>
                 </div>
-                <div className="text-center !max-w-[298px] !h-[57px] text-white opacity-50 font-normal text-base leading-[110%]">
-                    {description}
-                </div>
-            </div>
 
-            <div className="flex flex-col gap-2 w-full">
-                <MarqueeRow direction="left">
-                    {rowOne()}
-                </MarqueeRow>
-                <MarqueeRow direction="right">
-                    {rowTwo()}
-                </MarqueeRow>
-                <MarqueeRow direction="left">
-                    {rowThree()}
-                </MarqueeRow>
+                <div className="flex flex-col gap-2 w-full">
+                    <MarqueeRow direction="left">
+                        {rowOne()}
+                    </MarqueeRow>
+                    <MarqueeRow direction="right">
+                        {rowTwo()}
+                    </MarqueeRow>
+                    <MarqueeRow direction="left">
+                        {rowThree()}
+                    </MarqueeRow>
+                </div>
             </div>
         </div>
     )

@@ -43,6 +43,10 @@ const UpgradePlan = ({ showUpgradeModal, setShowUpgradeModal }: UpgradePlanProps
     setHoveredFeature(null);
   }
 
+  const handleUnlockFeatures = () => {
+    window.open("https://musicgpt.com", "_blank");
+  }
+
   return (
     <Dialog open={showUpgradeModal} onOpenChange={handleOpenChange}>
       <DialogContent className="h-[600px] !w-[800px] !max-w-[800px] rounded-[28px] bg-primary-100 flex flex-row gap-0 p-0 border-0" showCloseButton={false}>
@@ -82,7 +86,7 @@ const UpgradePlan = ({ showUpgradeModal, setShowUpgradeModal }: UpgradePlanProps
                 USD per month, billed yearly
               </div>
             </div>
-            <Button className="cursor-pointer w-full h-[56px] rounded-[12px] gap-2 px-3 py-[3px] bg-white hover:bg-white border border-primary-500 text-primary-100 font-semibold text-[16px]">
+            <Button onClick={handleUnlockFeatures} className="cursor-pointer w-full h-[56px] rounded-[12px] gap-2 px-3 py-[3px] bg-white hover:bg-white border border-primary-500 text-primary-100 font-semibold text-[16px]">
               Unlock {selectedPlan} Features
               <ArrowRight />
             </Button>

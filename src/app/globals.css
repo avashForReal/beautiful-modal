@@ -125,6 +125,17 @@
     }
   }
 
+  @keyframes blurIn {
+    0% {
+      filter: blur(10px);
+      opacity: 0.7;
+    }
+    100% {
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+
   .animate-marquee {
     animation: marquee 5s linear infinite;
   }
@@ -135,5 +146,9 @@
 
   .animate-marquee-right {
     animation: marquee-right 12s linear infinite;
+  }
+
+  .animate-blur-in {
+    animation: blurIn 0.25s ease-in-out forwards;
   }
 }
